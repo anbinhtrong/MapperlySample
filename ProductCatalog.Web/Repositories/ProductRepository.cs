@@ -34,5 +34,22 @@ namespace ProductCatalog.Web.Repositories
             product.Id = _products.Max(p => p.Id) + 1;
             _products.Add(product);
         }
+
+        public void Update(Product product)
+        {
+            var existingProduct = _products.FirstOrDefault(p => p.Id == product.Id);
+            if (existingProduct != null)
+            {
+                existingProduct.Name = product.Name;
+                existingProduct.Description = product.Description;
+                existingProduct.Price = product.Price;
+                existingProduct.Stock = product.Stock;
+                existingProduct.CategoryId = product.CategoryId;
+                existingProduct.IsActive = product.IsActive;
+
+                // Reload category reference
+                existingProduct.Category = _categories.FirstOrDefault(c => c.Id == product.CategoryId);
+            }
+        }
     }
 }

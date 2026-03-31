@@ -57,5 +57,48 @@ namespace ProductCatalog.Web.Controllers
             _service.CreateProduct(model);
             return RedirectToAction("Index");
         }
+
+        // GET: /Product/Edit/5
+        public ActionResult Edit(int id)
+        {
+            var repo = new ProductRepository();
+            var product = repo.GetById(id);
+            if (product == null) return HttpNotFound();
+
+            var mapper = AutoMapperConfig.Mapper;
+            var model = mapper.Map<ProductEditViewModel>(product);
+
+            model.Categories = new List<CategoryViewModel>
+            {
+                new CategoryViewModel { Id = 1, Name = "Laptop" },
+                new CategoryViewModel { Id = 2, Name = "Phụ kiện" },
+                new CategoryViewModel { Id = 3, Name = "Màn hình" },
+            };
+
+            return View(model);
+        }
+
+        // POST: /Product/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, ProductEditViewModel model)
+        {
+            if (id != model.Id)
+                return HttpNotFound();
+
+            if (!ModelState.IsValid)
+            {
+                model.Categories = new List<CategoryViewModel>
+                {
+                    new CategoryViewModel { Id = 1, Name = "Laptop" },
+                    new CategoryViewModel { Id = 2, Name = "Phụ kiện" },
+                    new CategoryViewModel { Id = 3, Name = "Màn hình" },
+                };
+                return View(model);
+            }
+
+            _service.UpdateProduct(model);
+            return RedirectToAction("Index");
+        }
     }
 }

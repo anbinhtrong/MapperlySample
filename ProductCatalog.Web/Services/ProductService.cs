@@ -35,5 +35,11 @@ namespace ProductCatalog.Web.Services
             var product = _mapper.Map<Product>(model);
             _repo.Add(product);
         }
+
+        public void UpdateProduct(ProductEditViewModel model)
+        {
+            var product = _mapper.Map<Product>(model);
+            _repo.Update(product);
+        }
     }
 }

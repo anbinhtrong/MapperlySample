@@ -8,5 +8,6 @@ namespace ProductCatalog.Web.Services
         IEnumerable<ProductViewModel> GetAllProducts();
         ProductViewModel GetProduct(int id);
         void CreateProduct(ProductCreateViewModel model);
+        void UpdateProduct(ProductEditViewModel model);
     }
 }

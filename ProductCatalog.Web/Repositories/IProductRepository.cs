@@ -8,5 +8,6 @@ namespace ProductCatalog.Web.Repositories
         IEnumerable<Product> GetAll();
         Product GetById(int id);
         void Add(Product product);
+        void Update(Product product);
     }
 }
