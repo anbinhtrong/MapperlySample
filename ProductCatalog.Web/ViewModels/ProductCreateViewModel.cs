@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Riok.Mapperly.Abstractions;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace ProductCatalog.Web.ViewModels

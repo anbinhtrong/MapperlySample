@@ -1,0 +1,10 @@
+{
+    "profiles": {
+        "IIS Express": {
+            "commandName": "Executable",
+            "executablePath": "C:\\Program Files\\IIS Express\\iisexpress.exe",
+            "commandLineArgs": "/path:\"$(ProjectDir)\" /port:44300 /clr:v4.0",
+            "workingDirectory": "$(ProjectDir)"
+        }
+    }
+}

@@ -14,7 +14,7 @@ namespace ProductCatalog.Web.Controllers
         public ProductController()
         {
             var repo = new ProductRepository();
-            var mapper = AutoMapperConfig.Mapper;
+            var mapper = MapperlyConfig.Mapper;
             _service = new ProductService(repo, mapper);
         }
 
@@ -65,8 +65,8 @@ namespace ProductCatalog.Web.Controllers
             var product = repo.GetById(id);
             if (product == null) return HttpNotFound();
 
-            var mapper = AutoMapperConfig.Mapper;
-            var model = mapper.Map<ProductEditViewModel>(product);
+            var mapper = MapperlyConfig.Mapper;
+            var model = mapper.MapToProductEditViewModel(product);
 
             model.Categories = new List<CategoryViewModel>
             {
