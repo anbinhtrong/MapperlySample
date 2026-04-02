@@ -1,10 +1,17 @@
 {
-    "profiles": {
-        "IIS Express": {
-            "commandName": "Executable",
-            "executablePath": "C:\\Program Files\\IIS Express\\iisexpress.exe",
-            "commandLineArgs": "/path:\"$(ProjectDir)\" /port:44300 /clr:v4.0",
-            "workingDirectory": "$(ProjectDir)"
-        }
+  "profiles": {
+    "IIS Express (Rider)": {
+      "commandName": "Executable",
+      "executablePath": "$(MSBuildExtensionsPath64)/../IIS Express/iisexpress.exe",
+      "commandLineArgs": "/path:\"$(MSBuildProjectDirectory)\" /port:1543",
+      "workingDirectory": "$(MSBuildExtensionsPath64)/../IIS Express",
+      "environmentVariables": {
+        "WEBSITE_PATH": "$(ProjectDir)",
+        "ASPNETCORE_ENVIRONMENT": "$(Configuration)"
+      },
+      "launchBrowser": true,
+      "launchUrl": "http://localhost:1543/",
+      "applicationUrl": "http://localhost:1543"
     }
+  }
 }
